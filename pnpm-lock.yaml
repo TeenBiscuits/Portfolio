@@ -12,38 +12,38 @@ importers:
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.3)(typescript@5.8.3)
       '@astrojs/rss':
-        specifier: ^4.0.9
+        specifier: ^4.0.12
         version: 4.0.12
       '@astrojs/sitemap':
-        specifier: ^3.2.1
+        specifier: ^3.4.1
         version: 3.4.1
       '@astrojs/tailwind':
-        specifier: ^5.1.2
+        specifier: ^5.1.5
         version: 5.1.5(astro@4.16.18(@types/node@22.15.30)(rollup@4.42.0)(typescript@5.8.3))(tailwindcss@3.4.17)
       astro:
-        specifier: ^4.16.7
+        specifier: ^4.16.18
         version: 4.16.18(@types/node@22.15.30)(rollup@4.42.0)(typescript@5.8.3)
       astro-icon:
-        specifier: ^1.1.1
+        specifier: ^1.1.5
         version: 1.1.5
       tailwindcss:
-        specifier: ^3.4.14
+        specifier: ^3.4.17
         version: 3.4.17
       typescript:
-        specifier: ^5.6.3
+        specifier: ^5.8.3
         version: 5.8.3
     devDependencies:
       '@tailwindcss/typography':
-        specifier: ^0.5.15
+        specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.17)
       prettier:
-        specifier: ^3.3.3
+        specifier: ^3.5.3
         version: 3.5.3
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.8
+        specifier: ^0.6.12
         version: 0.6.12(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
 
 packages:
