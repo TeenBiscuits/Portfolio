@@ -1,56 +1,56 @@
 {
-  "name": "Trevor Tyler Lee",
-  "bio": "Free, open source LinkTree alternative built with Astro & Tailwind CSS",
+  "name": "Pablo Portas López",
+  "bio": "Estudiantes de Ingeniería Informática en la UDC 🎓💻 ",
   "profilePicture": "/profile-picture.jpg",
-  "url": "https://trevortylerlee.com",
+  "url": "https://www.pablopl.dev",
   "blog": true,
   "iconLinks": [
     {
-      "id": "1728534577184",
-      "icon": "link",
-      "url": "https://boogerbuttcheeks.com"
-    },
-    {
       "id": "1728534577185",
       "icon": "email",
-      "url": "mailto:ttl@trevortylerlee.com"
+      "url": "mailto:pablo.portas@udc.es"
     },
     {
       "id": "1728534577186",
       "icon": "github",
-      "url": "https://github.com/trevortylerlee"
+      "url": "https://github.com/TeenBiscuits"
     },
     {
       "id": "1728534577187",
-      "icon": "twitter",
-      "url": "https://twitter.com/boogerbuttcheek"
+      "icon": "x",
+      "url": "https://x.com/PabloPortasL"
+    },
+    {
+      "id": "1749311668856",
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/in/pabloportaslopez/"
+    },
+    {
+      "id": "1749311777143",
+      "icon": "kofi",
+      "url": "https://ko-fi.com/pablopl"
     }
   ],
   "customLinks": [
     {
-      "id": "1728534585738",
-      "title": "🍌 donkey kong country on the snes",
-      "url": "https://youtu.be/7hgr-ZuzXng?si=v3dr9mu2cBL_D4ED"
-    },
-    {
-      "id": "1728534585739",
-      "title": " Best macOS apps",
-      "url": "https://macintoshapps.com"
-    },
-    {
-      "id": "1728534585740",
-      "title": "💕 36 Questions To Fall In Love",
-      "url": "https://thirtysixquestions.org"
-    },
-    {
-      "id": "1728534585741",
-      "title": "SuperWeb Themes",
-      "url": "https://superwebthemes.com"
-    },
-    {
       "id": "1728534585742",
-      "title": "♥ Donate",
-      "url": "https://donate.stripe.com/aEU6ow7VEf7u7sseUU"
+      "title": "📚🎓 Pásame el Código",
+      "url": "https://pc.pablopl.dev"
+    },
+    {
+      "id": "1749311823163",
+      "title": "🕹️🏆 CronoSquare",
+      "url": "https://github.com/TeenBiscuits/CronoSquare"
+    },
+    {
+      "id": "1749311825726",
+      "title": "🎮🖥️ Galletas SMP",
+      "url": "https://www.servidorgalletas.com"
+    },
+    {
+      "id": "1749312149219",
+      "title": "❤️☕️ Donar",
+      "url": "https://ko-fi.com/pablopl"
     }
   ]
 }
