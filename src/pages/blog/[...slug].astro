@@ -31,7 +31,7 @@ const { Content } = await entry.render();
   <main>
     <a
       href="/"
-      class="block py-3 text-lg font-medium uppercase text-lightModeForegroundMuted underline underline-offset-4 hover:text-lightModeForeground dark:text-darkModeForegroundMuted dark:hover:text-darkModeForeground"
+      class="block py-3 text-lg font-medium uppercase text-light-mode-foreground-muted underline underline-offset-4 hover:text-light-mode-foreground dark:text-dark-mode-foreground-muted dark:hover:text-dark-mode-foreground"
       >{`← ${SITE.name}`}</a
     >
     {
@@ -44,12 +44,12 @@ const { Content } = await entry.render();
       )
     }
     <h1
-      class="mt-6 flex flex-wrap justify-center text-balance text-2xl font-medium text-lightModeForeground dark:text-darkModeForeground"
+      class="mt-6 flex flex-wrap justify-center text-balance text-2xl font-medium text-light-mode-foreground dark:text-dark-mode-foreground"
     >
       {entry.data.title}
     </h1>
     <p
-      class="text-center text-sm text-lightModeForegroundMuted dark:text-darkModeForegroundMuted"
+      class="text-center text-sm text-light-mode-foreground-muted dark:text-dark-mode-foreground-muted"
     >
       {formatDate(entry.data.publicationDate)}
     </p>
@@ -59,7 +59,7 @@ const { Content } = await entry.render();
     </div>
     <a
       href="/"
-      class="block py-3 text-lg font-medium uppercase text-lightModeForegroundMuted underline underline-offset-4 hover:text-lightModeForeground dark:text-darkModeForegroundMuted dark:hover:text-darkModeForeground"
+      class="block py-3 text-lg font-medium uppercase text-light-mode-foreground-muted underline underline-offset-4 hover:text-light-mode-foreground dark:text-dark-mode-foreground-muted dark:hover:text-dark-mode-foreground"
       >{`← ${SITE.name}`}</a
     >
   </main>
