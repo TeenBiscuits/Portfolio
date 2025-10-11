@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import { partytown } from "astro/config";
+import partytown from "@astrojs/partytown";
 
 import icon from "astro-icon";
 
