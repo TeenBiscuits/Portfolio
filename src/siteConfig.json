@@ -6,49 +6,52 @@
   "blog": false,
   "iconLinks": [
     {
-      "id": "1728534577185",
       "icon": "email",
       "url": "mailto:pablo.portas@udc.es"
     },
     {
-      "id": "1728534577186",
       "icon": "github",
       "url": "https://github.com/TeenBiscuits"
     },
     {
-      "id": "1728534577187",
       "icon": "x",
       "url": "https://x.com/PabloPortasL"
     },
     {
-      "id": "1749311668856",
       "icon": "linkedin",
       "url": "https://www.linkedin.com/in/pabloportaslopez/"
     },
     {
-      "id": "1749311777143",
       "icon": "kofi",
       "url": "https://ko-fi.com/pablopl"
     }
   ],
   "customLinks": [
     {
-      "id": "1728534585742",
+      "title": "✍️👨‍💻 Blog Personal",
+      "url": "https://blog.pablopl.dev"
+    },
+    {
+      "title": "📋🤵 Curriculum Vitae",
+      "url": "https://cv.pablopl.dev"
+    },
+    {
       "title": "📚🎓 Pásame el Código",
       "url": "https://pc.pablopl.dev"
     },
     {
-      "id": "1749311823163",
       "title": "🕹️🏆 CronoSquare",
       "url": "https://github.com/TeenBiscuits/CronoSquare"
     },
     {
-      "id": "1749311825726",
+      "title": "🛍️🔎 MandaRef",
+      "url": "https://github.com/TeenBiscuits/MandaRef"
+    },
+    {
       "title": "🎮🖥️ Galletas SMP",
       "url": "https://github.com/GalletasSMP"
     },
     {
-      "id": "1749312149219",
       "title": "❤️☕️ Donar",
       "url": "https://ko-fi.com/pablopl"
     }
