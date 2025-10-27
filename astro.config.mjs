@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 
 import icon from "astro-icon";
 
@@ -11,10 +10,5 @@ export default defineConfig({
     "/blog": "/",
   },
   site: "https://www.pablopl.dev",
-  integrations: [
-    tailwind(),
-    sitemap(),
-    icon(),
-    partytown({ config: { forward: ["dataLayer.push"] } }),
-  ],
+  integrations: [tailwind(), sitemap(), icon()],
 });
