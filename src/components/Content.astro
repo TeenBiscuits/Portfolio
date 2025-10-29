@@ -10,14 +10,18 @@ import CustomLink from "@/components/CustomLink.astro";
 <ul class="flex justify-center gap-4 py-12">
   {
     SITE.iconLinks.map((link) => {
-      return <IconLink url={link.url} icon={link.icon} />;
+      return <IconLink url={link.url} icon={link.icon} event={link.event} />;
     })
   }
 </ul>
 <ul class="grid gap-y-6 pb-12 pt-4">
   {
     SITE.customLinks.map((link) => {
-      return <CustomLink url={link.url}>{link.title}</CustomLink>;
+      return (
+        <CustomLink url={link.url} event={link.event}>
+          {link.title}
+        </CustomLink>
+      );
     })
   }
 </ul>

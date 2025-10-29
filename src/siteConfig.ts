@@ -14,12 +14,14 @@ interface IconLink {
   id: string;
   icon: string;
   url: string;
+  event: string;
 }
 
 interface CustomLink {
   id: string;
   title: string;
   url: string;
+  event: string;
 }
 
 export const SITE: SiteConfiguration = {

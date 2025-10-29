@@ -1,12 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { icon, url } = Astro.props;
+const { icon, url, event } = Astro.props;
 ---
 
 <li>
   <a
     href={url}
+    data-umami-event={event}
     aria-label={icon}
     class="group block rounded-full bg-lightModeIconLinkBackground p-3 ring-2 ring-lightModeIconLinkOutline transition-colors hover:bg-lightModeIconLinkBackgroundHover hover:ring-lightModeIconLinkOutlineHover dark:bg-darkModeIconLinkBackground dark:ring-darkModeIconLinkOutline dark:hover:bg-darkModeIconLinkBackgroundHover dark:hover:ring-darkModeIconLinkOutlineHover"
   >

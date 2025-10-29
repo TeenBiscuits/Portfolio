@@ -7,53 +7,65 @@
   "iconLinks": [
     {
       "icon": "email",
-      "url": "mailto:pablo.portas@udc.es"
+      "url": "mailto:pablo.portas@udc.es",
+      "event": "Email Icon Link"
     },
     {
       "icon": "github",
-      "url": "https://github.com/TeenBiscuits"
+      "url": "https://github.com/TeenBiscuits",
+      "event": "GitHub Icon Link"
     },
     {
       "icon": "x",
-      "url": "https://x.com/PabloPortasL"
+      "url": "https://x.com/PabloPortasL",
+      "event": "X Icon Link"
     },
     {
       "icon": "linkedin",
-      "url": "https://www.linkedin.com/in/pabloportaslopez/"
+      "url": "https://www.linkedin.com/in/pabloportaslopez/",
+      "event": "LinkedIn Icon Link"
     },
     {
       "icon": "kofi",
-      "url": "https://ko-fi.com/pablopl"
+      "url": "https://ko-fi.com/pablopl",
+      "event": "KoFi Icon Link"
     }
   ],
   "customLinks": [
     {
       "title": "✍️👨‍💻 Mi Blog",
-      "url": "https://blog.pablopl.dev"
+      "url": "https://blog.pablopl.dev",
+      "event": "Blog Link"
     },
     {
       "title": "📋🤵 Curriculum Vitae",
-      "url": "https://cv.pablopl.dev"
+      "url": "https://cv.pablopl.dev",
+      "event": "Curriculum Vitae Link"
     },
     {
       "title": "📚🎓 Pásame el Código",
-      "url": "https://pc.pablopl.dev"
+      "url": "https://pc.pablopl.dev",
+      "event": "Pásame el Código Link"
     },
     {
       "title": "🕹️🏆 CronoSquare",
-      "url": "https://github.com/TeenBiscuits/CronoSquare"
+      "url": "https://github.com/TeenBiscuits/CronoSquare",
+      "event": "CronoSquare Link"
     },
     {
       "title": "🛍️🔎 MandaRef",
-      "url": "https://github.com/TeenBiscuits/MandaRef"
+      "url": "https://github.com/TeenBiscuits/MandaRef",
+      "event": "MandaRef Link"
     },
     {
       "title": "🎮🖥️ Galletas SMP",
-      "url": "https://github.com/GalletasSMP"
+      "url": "https://github.com/GalletasSMP",
+      "event": "Galletas SMP Link"
     },
     {
       "title": "❤️☕️ Donar",
-      "url": "https://ko-fi.com/pablopl"
+      "url": "https://ko-fi.com/pablopl",
+      "event": "KoFi Link"
     }
   ]
 }
