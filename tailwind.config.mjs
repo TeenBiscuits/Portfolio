@@ -8,64 +8,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        lightModeBackground:
-          "rgb(var(--light-mode-background) / <alpha-value>)",
-        lightModeForeground:
-          "rgb(var(--light-mode-foreground) / <alpha-value>)",
-        lightModeForegroundMuted:
-          "rgb(var(--light-mode-foreground-muted) / <alpha-value>)",
-        lightModeIconLinkOutline:
-          "rgb(var(--light-mode-icon-link-outline) / <alpha-value>)",
-        lightModeIconLinkBackground:
-          "rgb(var(--light-mode-icon-link-background) / <alpha-value>)",
-        lightModeIconLinkText:
-          "rgb(var(--light-mode-icon-link-text) / <alpha-value>)",
+        lightModeBackground: "var(--light-mode-background)",
+        lightModeForeground: "var(--light-mode-foreground)",
+        lightModeForegroundMuted: "var(--light-mode-foreground-muted)",
+        lightModeIconLinkOutline: "var(--light-mode-icon-link-outline)",
+        lightModeIconLinkBackground: "var(--light-mode-icon-link-background)",
+        lightModeIconLinkText: "var(--light-mode-icon-link-text)",
         lightModeIconLinkOutlineHover:
-          "rgb(var(--light-mode-icon-link-outline-hover) / <alpha-value>)",
+          "var(--light-mode-icon-link-outline-hover)",
         lightModeIconLinkBackgroundHover:
-          "rgb(var(--light-mode-icon-link-background-hover) / <alpha-value>)",
-        lightModeIconLinkTextHover:
-          "rgb(var(--light-mode-icon-link-text-hover) / <alpha-value>)",
-        lightModeCustomLinkOutline:
-          "rgb(var(--light-mode-custom-link-outline) / <alpha-value>)",
+          "var(--light-mode-icon-link-background-hover)",
+        lightModeIconLinkTextHover: "var(--light-mode-icon-link-text-hover)",
+        lightModeCustomLinkOutline: "var(--light-mode-custom-link-outline)",
         lightModeCustomLinkBackground:
-          "rgb(var(--light-mode-custom-link-background) / <alpha-value>)",
-        lightModeCustomLinkText:
-          "rgb(var(--light-mode-custom-link-text) / <alpha-value>)",
+          "var(--light-mode-custom-link-background)",
+        lightModeCustomLinkText: "var(--light-mode-custom-link-text)",
         lightModeCustomLinkOutlineHover:
-          "rgb(var(--light-mode-custom-link-outline-hover) / <alpha-value>)",
+          "var(--light-mode-custom-link-outline-hover)",
         lightModeCustomLinkBackgroundHover:
-          "rgb(var(--light-mode-custom-link-background-hover) / <alpha-value>)",
+          "var(--light-mode-custom-link-background-hover)",
         lightModeCustomLinkTextHover:
-          "rgb(var(--light-mode-custom-link-text-hover) / <alpha-value>)",
-        darkModeBackground: "rgb(var(--dark-mode-background) / <alpha-value>)",
-        darkModeForeground: "rgb(var(--dark-mode-foreground) / <alpha-value>)",
-        darkModeForegroundMuted:
-          "rgb(var(--dark-mode-foreground-muted) / <alpha-value>)",
-        darkModeIconLinkOutline:
-          "rgb(var(--dark-mode-icon-link-outline) / <alpha-value>)",
-        darkModeIconLinkBackground:
-          "rgb(var(--dark-mode-icon-link-background) / <alpha-value>)",
-        darkModeIconLinkText:
-          "rgb(var(--dark-mode-icon-link-text) / <alpha-value>)",
+          "var(--light-mode-custom-link-text-hover)",
+        darkModeBackground: "var(--dark-mode-background)",
+        darkModeForeground: "var(--dark-mode-foreground)",
+        darkModeForegroundMuted: "var(--dark-mode-foreground-muted)",
+        darkModeIconLinkOutline: "var(--dark-mode-icon-link-outline)",
+        darkModeIconLinkBackground: "var(--dark-mode-icon-link-background)",
+        darkModeIconLinkText: "var(--dark-mode-icon-link-text)",
         darkModeIconLinkOutlineHover:
-          "rgb(var(--dark-mode-icon-link-outline-hover) / <alpha-value>)",
+          "var(--dark-mode-icon-link-outline-hover)",
         darkModeIconLinkBackgroundHover:
-          "rgb(var(--dark-mode-icon-link-background-hover) / <alpha-value>)",
-        darkModeIconLinkTextHover:
-          "rgb(var(--dark-mode-icon-link-text-hover) / <alpha-value>)",
-        darkModeCustomLinkOutline:
-          "rgb(var(--dark-mode-custom-link-outline) / <alpha-value>)",
-        darkModeCustomLinkBackground:
-          "rgb(var(--dark-mode-custom-link-background) / <alpha-value>)",
-        darkModeCustomLinkText:
-          "rgb(var(--dark-mode-custom-link-text) / <alpha-value>)",
+          "var(--dark-mode-icon-link-background-hover)",
+        darkModeIconLinkTextHover: "var(--dark-mode-icon-link-text-hover)",
+        darkModeCustomLinkOutline: "var(--dark-mode-custom-link-outline)",
+        darkModeCustomLinkBackground: "var(--dark-mode-custom-link-background)",
+        darkModeCustomLinkText: "var(--dark-mode-custom-link-text)",
         darkModeCustomLinkOutlineHover:
-          "rgb(var(--dark-mode-custom-link-outline-hover) / <alpha-value>)",
+          "var(--dark-mode-custom-link-outline-hover)",
         darkModeCustomLinkBackgroundHover:
-          "rgb(var(--dark-mode-custom-link-background-hover) / <alpha-value>)",
-        darkModeCustomLinkTextHover:
-          "rgb(var(--dark-mode-custom-link-text-hover) / <alpha-value>)",
+          "var(--dark-mode-custom-link-background-hover)",
+        darkModeCustomLinkTextHover: "var(--dark-mode-custom-link-text-hover)",
       },
     },
   },
