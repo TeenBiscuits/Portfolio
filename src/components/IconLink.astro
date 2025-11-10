@@ -7,7 +7,8 @@ const { icon, url, event } = Astro.props;
 <li>
   <a
     href={url}
-    data-umami-event={event}
+    data-umami-event="Social Link"
+    data-umami-event-url={url}
     aria-label={icon}
     class="group block rounded-full bg-lightModeIconLinkBackground p-3 ring-2 ring-lightModeIconLinkOutline transition-colors hover:bg-lightModeIconLinkBackgroundHover hover:ring-lightModeIconLinkOutlineHover dark:bg-darkModeIconLinkBackground dark:ring-darkModeIconLinkOutline dark:hover:bg-darkModeIconLinkBackgroundHover dark:hover:ring-darkModeIconLinkOutlineHover"
   >
