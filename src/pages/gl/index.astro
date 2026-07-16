@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import { translations } from '../../utils/i18n';
+
+const t = translations.gl;
+---
+
+<Layout lang="gl" title={t.seoTitle} description={t.seoDescription}>
+	<Portfolio lang="gl" />
+</Layout>

@@ -1,19 +1,21 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Pablo Portas López",
+  "short_name": "Pablo Portas López",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/web-app-manifest-192x192.png?v=20260716",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/web-app-manifest-512x512.png?v=20260716",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#FAF9F6",
+  "background_color": "#FAF9F6",
   "display": "standalone"
 }

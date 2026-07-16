@@ -1,14 +1,54 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import sitemap from "@astrojs/sitemap";
+// @ts-check
+import { defineConfig, fontProviders } from "astro/config";
 
-import icon from "astro-icon";
+import tailwindcss from "@tailwindcss/vite";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  redirects: {
-    "/blog": "/",
-  },
   site: "https://www.pablopl.dev",
-  integrations: [tailwind(), sitemap(), icon()],
+
+  i18n: {
+    locales: ["es", "en", "gl"],
+    defaultLocale: "es",
+  },
+
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "es",
+        locales: {
+          es: "es-ES",
+          en: "en-US",
+          gl: "gl-ES",
+        },
+      },
+    }),
+  ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Merriweather",
+      cssVariable: "--font-merriweather",
+      fallbacks: ["serif"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Rubik",
+      cssVariable: "--font-rubik",
+      fallbacks: ["sans-serif"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Cascadia Code",
+      cssVariable: "--font-cascadia",
+      fallbacks: ["monospace"],
+    },
+  ],
 });

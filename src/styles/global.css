@@ -1,48 +1,126 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    color-scheme: light dark;
+@custom-variant dark (&:where(.dark, .dark *));
 
-    --light-mode-background: #f4f1eb;
-    --light-mode-foreground: #120f07;
-    --light-mode-foreground-muted: #120f07;
-    --light-mode-icon-link-background: #cfc7ab;
-    --light-mode-icon-link-background-hover: #cfc7ab;
-    --light-mode-icon-link-outline: 58 107 223;
-    --light-mode-icon-link-outline-hover: #120f07;
-    --light-mode-icon-link-text: #120f07;
-    --light-mode-icon-link-text-hover: #120f07;
-    --light-mode-custom-link-background: #a5cac7;
-    --light-mode-custom-link-background-hover: #a5cac7;
-    --light-mode-custom-link-outline: #a5cac7;
-    --light-mode-custom-link-outline-hover: #120f07;
-    --light-mode-custom-link-text: #120f07;
-    --light-mode-custom-link-text-hover: #120f07;
+@theme inline {
+  --font-serif: var(--font-merriweather);
+  --font-sans: var(--font-rubik);
+  --font-mono: var(--font-cascadia);
+}
 
-    --dark-mode-background: #14110b;
-    --dark-mode-foreground: #f8f5ed;
-    --dark-mode-foreground-muted: #f8f5ed;
-    --dark-mode-icon-link-background: #544c30;
-    --dark-mode-icon-link-background-hover: #544c30;
-    --dark-mode-icon-link-outline: #544c30;
-    --dark-mode-icon-link-outline-hover: #f8f5ed;
-    --dark-mode-icon-link-text: #f8f5ed;
-    --dark-mode-icon-link-text-hover: #f8f5ed;
-    --dark-mode-custom-link-background: #355a57;
-    --dark-mode-custom-link-background-hover: #355a57;
-    --dark-mode-custom-link-outline: #355a57;
-    --dark-mode-custom-link-outline-hover: #f8f5ed;
-    --dark-mode-custom-link-text: #f8f5ed;
-    --dark-mode-custom-link-text-hover: #f8f5ed;
+:root {
+  /* Premium Light Theme */
+  --bg-color: #faf9f6;
+  --fg-color: #1c1917;
+  --fg-muted: #6f6a64;
+  --border-color: rgba(28, 25, 23, 0.08);
+  --hover-bg: rgba(28, 25, 23, 0.03);
+  --accent-color: #3b82f6;
+
+  /* Custom Easing Curves - Emil Kowalski & Apple Design */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring: cubic-bezier(
+    0.16,
+    1,
+    0.3,
+    1
+  ); /* Critically damped iOS-like feel */
+  --expo-out: linear(
+    0 0%,
+    0.1684 2.66%,
+    0.3165 5.49%,
+    0.446 8.52%,
+    0.5581 11.78%,
+    0.6535 15.29%,
+    0.7341 19.11%,
+    0.8011 23.3%,
+    0.8557 27.93%,
+    0.8962 32.68%,
+    0.9283 38.01%,
+    0.9529 44.08%,
+    0.9711 51.14%,
+    0.9833 59.06%,
+    0.9915 68.74%,
+    1 100%
+  );
+
+  /* System Typography Settings */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+:root.dark {
+  /* Premium Dark Theme */
+  --bg-color: #121212;
+  --fg-color: #f4f4f5;
+  --fg-muted: #9a9a9f;
+  --border-color: rgba(244, 244, 245, 0.08);
+  --hover-bg: rgba(244, 244, 245, 0.04);
+  --accent-color: #60a5fa;
+}
+
+html {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  transition:
+    background-color 0.4s var(--ease-spring),
+    color 0.4s var(--ease-spring);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom interactive selections */
+::selection {
+  background-color: var(--hover-bg);
+  color: var(--fg-color);
+}
+
+/* Tabular numbers for clocks/dates to prevent layout shift */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Transition utility for elements */
+.transition-spring {
+  transition: all 0.3s var(--ease-spring);
+}
+
+/* Circular reveal clip-path animation for theme toggle */
+html.theme-transition-active::view-transition-group(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@keyframes theme-dummy {
+  from {
+    opacity: 0.999;
   }
-
-  body {
-    background-color: light-dark(
-      var(--light-mode-background),
-      var(--dark-mode-background)
-    );
+  to {
+    opacity: 1;
   }
+}
+
+html.theme-transition-active::view-transition-new(root) {
+  animation: theme-dummy 800ms;
+  mix-blend-mode: normal;
+  z-index: 9999;
+}
+
+html.theme-transition-active::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  z-index: 1;
+}
+
+/* Disable transition-name on all elements during theme toggle so they are captured in the root sweep */
+html.theme-transition-active * {
+  view-transition-name: none !important;
 }
