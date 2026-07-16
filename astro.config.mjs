@@ -9,6 +9,24 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://www.pablopl.dev",
 
+  i18n: {
+    locales: ["es", "en", "gl"],
+    defaultLocale: "es",
+  },
+
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "es",
+        locales: {
+          es: "en-US",
+          en: "es-ES",
+          gl: "gl-ES",
+        },
+      },
+    }),
+  ],
+
   vite: {
     plugins: [tailwindcss()],
   },
@@ -33,6 +51,4 @@ export default defineConfig({
       fallbacks: ["monospace"],
     },
   ],
-
-  integrations: [sitemap()],
 });
