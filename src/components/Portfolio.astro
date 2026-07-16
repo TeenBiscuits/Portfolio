@@ -207,7 +207,7 @@ const iconMap = {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
-        hour12: true,
+        hour12: false,
       };
       
       const formatter = new Intl.DateTimeFormat([], options);
@@ -215,7 +215,7 @@ const iconMap = {
     } catch (e) {
       // Fallback
       const date = new Date();
-      timeElement.textContent = date.toLocaleTimeString();
+      timeElement.textContent = date.toLocaleTimeString([], { hour12: false });
     }
   };
 

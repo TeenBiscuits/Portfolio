@@ -98,6 +98,15 @@ html.theme-transition-active::view-transition-group(root) {
   animation: none;
 }
 
+@keyframes theme-reveal {
+  from {
+    opacity: 0.999;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html.theme-transition-active::view-transition-new(root) {
   mask-image: url("/theme-mask.svg");
   -webkit-mask-image: url("/theme-mask.svg");
@@ -105,7 +114,7 @@ html.theme-transition-active::view-transition-new(root) {
   -webkit-mask-repeat: no-repeat;
   mask-origin: border-box;
   -webkit-mask-origin: border-box;
-  animation: none;
+  animation: theme-reveal 700ms;
   z-index: 9999;
 }
 
