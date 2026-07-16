@@ -93,12 +93,13 @@ body {
   transition: all 0.3s var(--ease-spring);
 }
 
-/* Circular SVG mask reveal animation for theme toggle */
+/* Circular reveal clip-path animation for theme toggle */
 html.theme-transition-active::view-transition-group(root) {
   animation: none;
+  mix-blend-mode: normal;
 }
 
-@keyframes theme-reveal {
+@keyframes theme-dummy {
   from {
     opacity: 0.999;
   }
@@ -108,21 +109,15 @@ html.theme-transition-active::view-transition-group(root) {
 }
 
 html.theme-transition-active::view-transition-new(root) {
-  mask-image: url("/theme-mask.svg");
-  -webkit-mask-image: url("/theme-mask.svg");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-origin: border-box;
-  -webkit-mask-origin: border-box;
-  animation: theme-reveal 700ms;
+  animation: theme-dummy 450ms;
+  mix-blend-mode: normal;
   z-index: 9999;
 }
 
-html.theme-transition-active::view-transition-old(root),
-html.theme-transition-active.dark::view-transition-old(root) {
+html.theme-transition-active::view-transition-old(root) {
   animation: none;
-  animation-fill-mode: both;
-  z-index: -1;
+  mix-blend-mode: normal;
+  z-index: 1;
 }
 
 /* Disable transition-name on all elements during theme toggle so they are captured in the root sweep */

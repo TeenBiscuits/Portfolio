@@ -81,20 +81,14 @@
         document.documentElement.animate(
           [
             {
-              maskSize: "0px",
-              webkitMaskSize: "0px",
-              maskPosition: `${x}px ${y}px`,
-              webkitMaskPosition: `${x}px ${y}px`,
+              clipPath: `circle(0px at ${x}px ${y}px)`,
             },
             {
-              maskSize: `${endRadius * 2}px`,
-              webkitMaskSize: `${endRadius * 2}px`,
-              maskPosition: `${x - endRadius}px ${y - endRadius}px`,
-              webkitMaskPosition: `${x - endRadius}px ${y - endRadius}px`,
+              clipPath: `circle(${endRadius}px at ${x}px ${y}px)`,
             }
           ],
           {
-            duration: 700,
+            duration: 450,
             easing: "cubic-bezier(0.25, 1, 0.5, 1)",
             fill: "forwards",
             pseudoElement: "::view-transition-new(root)",
