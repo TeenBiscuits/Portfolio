@@ -1,48 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    color-scheme: light dark;
-
-    --light-mode-background: #f4f1eb;
-    --light-mode-foreground: #120f07;
-    --light-mode-foreground-muted: #120f07;
-    --light-mode-icon-link-background: #cfc7ab;
-    --light-mode-icon-link-background-hover: #cfc7ab;
-    --light-mode-icon-link-outline: 58 107 223;
-    --light-mode-icon-link-outline-hover: #120f07;
-    --light-mode-icon-link-text: #120f07;
-    --light-mode-icon-link-text-hover: #120f07;
-    --light-mode-custom-link-background: #a5cac7;
-    --light-mode-custom-link-background-hover: #a5cac7;
-    --light-mode-custom-link-outline: #a5cac7;
-    --light-mode-custom-link-outline-hover: #120f07;
-    --light-mode-custom-link-text: #120f07;
-    --light-mode-custom-link-text-hover: #120f07;
-
-    --dark-mode-background: #14110b;
-    --dark-mode-foreground: #f8f5ed;
-    --dark-mode-foreground-muted: #f8f5ed;
-    --dark-mode-icon-link-background: #544c30;
-    --dark-mode-icon-link-background-hover: #544c30;
-    --dark-mode-icon-link-outline: #544c30;
-    --dark-mode-icon-link-outline-hover: #f8f5ed;
-    --dark-mode-icon-link-text: #f8f5ed;
-    --dark-mode-icon-link-text-hover: #f8f5ed;
-    --dark-mode-custom-link-background: #355a57;
-    --dark-mode-custom-link-background-hover: #355a57;
-    --dark-mode-custom-link-outline: #355a57;
-    --dark-mode-custom-link-outline-hover: #f8f5ed;
-    --dark-mode-custom-link-text: #f8f5ed;
-    --dark-mode-custom-link-text-hover: #f8f5ed;
-  }
-
-  body {
-    background-color: light-dark(
-      var(--light-mode-background),
-      var(--dark-mode-background)
-    );
-  }
+@theme inline {
+  --font-serif: var(--font-merriweather);
+  --font-sans: var(--font-rubik);
+  --font-mono: var(--font-cascadia);
 }
