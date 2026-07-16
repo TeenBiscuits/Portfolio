@@ -35,7 +35,7 @@ const iconMap = {
 ---
 
 <div class="min-h-screen flex flex-col items-center justify-between py-12 px-6 sm:px-8 max-w-xl mx-auto font-sans relative selection:bg-stone-200/80 dark:selection:bg-zinc-800/80">
-  
+
   <!-- Header: Monogram & Utility Controls -->
   <header class="w-full flex items-center justify-between mb-12 fade-in-section delay-0">
     <a
@@ -45,7 +45,7 @@ const iconMap = {
       aria-label="Home"
       set:html={logoSvg}
     />
-    
+
     <div class="flex items-center gap-3">
       <LanguageSwitcher activeLang={lang} />
       <div class="w-[1px] h-4 bg-stone-200 dark:bg-zinc-800"></div>
@@ -55,27 +55,27 @@ const iconMap = {
 
   <!-- Main Content Profile Area -->
   <main class="w-full flex-grow flex flex-col justify-start">
-    
+
     <!-- Profile & Bio -->
     <section class="mb-12 flex flex-col items-start fade-in-section delay-1" transition:name="profile-area">
       <h1 class="text-3xl font-serif font-semibold tracking-tight text-stone-900 dark:text-zinc-100 select-text" transition:name="profile-name">
         Pablo Portas López
       </h1>
-      
+
       <p class="text-[14px] leading-relaxed text-stone-500 dark:text-zinc-400 mt-3.5 text-balance select-text font-normal" transition:name="profile-bio" data-scramble>
         {lang === "es" && (
           <>
-            Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exámenes <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> o <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. A veces escribo en mi <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Mi Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+            Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (hice Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exámenes <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> o <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. A veces escribo en mi <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Mi Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
           </>
         )}
         {lang === "en" && (
           <>
-            Computer Engineering student at UDC 💜🧜🏻‍♀️ (on Erasmus at LNU 💛🇸🇪). I program things in my free time like <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pass me Exams <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> or <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Sometimes I write in my <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="My Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+            Computer Engineering student at UDC 💜🧜🏻‍♀️ (did Erasmus at LNU 💛🇸🇪). I program things in my free time like <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pass me Exams <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> or <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Sometimes I write in my <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="My Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
           </>
         )}
         {lang === "gl" && (
           <>
-            Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exames <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> ou <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Ás veces escribo no meu <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="O meu Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+            Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (fixen Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exames <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> ou <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Ás veces escribo no meu <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="O meu Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
           </>
         )}
       </p>
@@ -127,7 +127,7 @@ const iconMap = {
                   {label}
                 </span>
               </div>
-              
+
               <div class="flex items-center gap-2">
                 <span class="text-[10px] tracking-wider uppercase font-mono text-stone-400 dark:text-zinc-500 group-hover:text-stone-500 dark:group-hover:text-zinc-400 transition-colors duration-150 select-none">
                   {link.category}
@@ -155,7 +155,7 @@ const iconMap = {
   <!-- Footer with Local Time & Signature -->
   <footer class="w-full pt-16 flex flex-col items-center gap-3 fade-in-section delay-4 text-center" transition:name="footer-info">
     <div class="w-12 h-[1px] bg-stone-200 dark:bg-zinc-800 mb-1"></div>
-    
+
     <!-- Galicia Local Time -->
     <p class="text-[11px] font-mono text-stone-400 dark:text-zinc-500 flex items-center gap-1.5 select-none tracking-tight">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500/80 dark:bg-emerald-400/80 animate-pulse"></span>
@@ -200,7 +200,7 @@ const iconMap = {
   const updateTime = () => {
     const timeElement = document.getElementById("local-time");
     if (!timeElement) return;
-    
+
     try {
       const options: Intl.DateTimeFormatOptions = {
         timeZone: "Europe/Madrid",
@@ -209,7 +209,7 @@ const iconMap = {
         second: "2-digit",
         hour12: false,
       };
-      
+
       const formatter = new Intl.DateTimeFormat([], options);
       timeElement.textContent = formatter.format(new Date());
     } catch (e) {
@@ -221,7 +221,7 @@ const iconMap = {
 
   const scrambleElement = (el: HTMLElement) => {
     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    
+
     function getTextNodes(node: Node): Text[] {
       const textNodes: Text[] = [];
       if (node.nodeType === Node.TEXT_NODE) {
@@ -296,13 +296,13 @@ const iconMap = {
 
   const startClock = () => {
     updateTime();
-    
+
     // Clear any previous interval from a prior page load to prevent duplicate clocks
     const w = window as unknown as Window;
     if (w.clockInterval) {
       clearInterval(w.clockInterval);
     }
-    
+
     w.clockInterval = setInterval(updateTime, 1000) as unknown as number;
   };
 
