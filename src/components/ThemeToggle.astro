@@ -88,7 +88,7 @@
             }
           ],
           {
-            duration: 450,
+            duration: 800,
             easing: "cubic-bezier(0.25, 1, 0.5, 1)",
             fill: "forwards",
             pseudoElement: "::view-transition-new(root)",
@@ -104,13 +104,6 @@
     toggle.addEventListener("click", handleClick);
   }
 
-  // Setup on page loads
+  // Setup on page loads (runs on both initial load and subsequent navigation swaps)
   document.addEventListener("astro:page-load", setupThemeToggle);
-  
-  // Setup on initial load
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupThemeToggle);
-  } else {
-    setupThemeToggle();
-  }
 </script>

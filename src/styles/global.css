@@ -109,7 +109,7 @@ html.theme-transition-active::view-transition-group(root) {
 }
 
 html.theme-transition-active::view-transition-new(root) {
-  animation: theme-dummy 450ms;
+  animation: theme-dummy 800ms;
   mix-blend-mode: normal;
   z-index: 9999;
 }
