@@ -6,8 +6,8 @@ import ThemeToggle from "./ThemeToggle.astro";
 import { customLinks, socialLinks } from "../config/links";
 import pcLogo from "../assets/pc-logo.svg?raw";
 import peLogo from "../assets/pe-logo.svg?raw";
-import fs from "node:fs";
-import path from "node:path";
+import firmaSvg from "../assets/firma.svg?raw";
+import logoSvgRaw from "../assets/logo.svg?raw";
 
 interface Props {
   lang: Locale;
@@ -16,15 +16,11 @@ interface Props {
 const { lang } = Astro.props;
 const t = translations[lang];
 
-// Read and clean the signature SVG from assets
-const signaturePath = path.resolve("src/assets/firma.svg");
-const signatureSvg = fs.readFileSync(signaturePath, "utf-8")
+const signatureSvg = firmaSvg
   .replace(/width="[^"]*"/, 'class="h-16 w-auto text-stone-500 dark:text-zinc-400 hover:text-stone-800 dark:hover:text-zinc-200 transition-colors duration-300 ease-[var(--ease-spring)]"')
   .replace(/height="[^"]*"/, "");
 
-// Read and clean the logo SVG from assets
-const logoPath = path.resolve("src/assets/logo.svg");
-const logoSvg = fs.readFileSync(logoPath, "utf-8")
+const logoSvg = logoSvgRaw
   .replace(/width="[^"]*"/, 'class="h-8 w-auto text-stone-900 dark:text-zinc-100 transition-colors duration-300 ease-[var(--ease-spring)]"')
   .replace(/height="[^"]*"/, "");
 
