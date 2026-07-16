@@ -5,7 +5,8 @@ export const translations = {
     title: "Pablo Portas López",
     bio: "Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como Pásame Exámenes o RealOrAI. A veces escribo en mi blog.",
     seoTitle: "Pablo Portas López | Estudiante de Ingeniería Informática",
-    seoDescription: "Descubre el portfolio de Pablo Portas López, estudiante de Ingeniería Informática en la UDC y LNU. Programo en mi tiempo libre cosas como Pásame Exámenes o RealOrAI, y escribo en mi blog.",
+    seoDescription:
+      "Descubre el portfolio de Pablo Portas López, estudiante de Ingeniería Informática en la UDC y LNU. Programo en mi tiempo libre cosas como Pásame Exámenes o RealOrAI, y escribo en mi blog.",
     sections: {
       writing: "Escritura y CV",
       projects: "Proyectos",
@@ -25,7 +26,8 @@ export const translations = {
     title: "Pablo Portas López",
     bio: "Computer Engineering student at UDC 💜🧜🏻‍♀️ (on Erasmus at LNU 💛🇸🇪). I program things in my free time like Pass me Exams or RealOrAI. Sometimes I write in my blog.",
     seoTitle: "Pablo Portas López | Computer Engineering Student",
-    seoDescription: "Explore the personal portfolio of Pablo Portas López, Computer Engineering student at UDC and LNU. I program in my free time (like Pass me Exams or RealOrAI) and write in my blog.",
+    seoDescription:
+      "Explore the personal portfolio of Pablo Portas López, Computer Engineering student at UDC and LNU. I program in my free time (like Pass me Exams or RealOrAI) and write in my blog.",
     sections: {
       writing: "Writing & CV",
       projects: "Projects",
@@ -45,7 +47,8 @@ export const translations = {
     title: "Pablo Portas López",
     bio: "Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como Pásame Exames ou RealOrAI. Ás veces escribo no meu blog.",
     seoTitle: "Pablo Portas López | Estudante de Enxeñaría Informática",
-    seoDescription: "Descubre o portfolio de Pablo Portas López, estudante de Enxeñaría Informática na UDC e LNU. Programo no meu tempo libre cousas como Pásame Exames ou RealOrAI, e escribo no meu blog.",
+    seoDescription:
+      "Descubre o portfolio de Pablo Portas López, estudante de Enxeñaría Informática na UDC e LNU. Programo no meu tempo libre cousas como Pásame Exames ou RealOrAI, e escribo no meu blog.",
     sections: {
       writing: "Escritura e CV",
       projects: "Proxectos",
