@@ -62,7 +62,7 @@ const iconMap = {
         Pablo Portas López
       </h1>
       
-      <p class="text-[14px] leading-relaxed text-stone-500 dark:text-zinc-400 mt-3.5 text-balance select-text font-normal" transition:name="profile-bio">
+      <p class="text-[14px] leading-relaxed text-stone-500 dark:text-zinc-400 mt-3.5 text-balance select-text font-normal" transition:name="profile-bio" data-scramble>
         {lang === "es" && (
           <>
             Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exámenes <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> o <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. A veces escribo en mi <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Mi Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
@@ -123,7 +123,7 @@ const iconMap = {
                 ) : (
                   <span class="text-base select-none">{link.emoji}</span>
                 )}
-                <span class="text-[14px] font-medium text-stone-700 dark:text-zinc-300 group-hover:text-stone-900 dark:group-hover:text-zinc-100 transition-colors duration-150">
+                <span class="text-[14px] font-medium text-stone-700 dark:text-zinc-300 group-hover:text-stone-900 dark:group-hover:text-zinc-100 transition-colors duration-150" data-scramble>
                   {label}
                 </span>
               </div>
@@ -160,7 +160,7 @@ const iconMap = {
     <p class="text-[11px] font-mono text-stone-400 dark:text-zinc-500 flex items-center gap-1.5 select-none tracking-tight">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500/80 dark:bg-emerald-400/80 animate-pulse"></span>
       <span id="local-time" class="tabular-nums font-semibold text-stone-500 dark:text-zinc-400">--:--:--</span>
-      <span>{t.timeIn}</span>
+      <span data-scramble>{t.timeIn}</span>
     </p>
 
     <!-- Letter Signature -->
@@ -219,6 +219,77 @@ const iconMap = {
     }
   };
 
+  const scrambleElement = (el: HTMLElement) => {
+    const chars = "µ§¥🧜🏻‍♀️🇸🇪💜💛🧜🏻‍♂️LNUUDCabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:\"<>?`-=[]\\;',./";
+    
+    function getTextNodes(node: Node): Text[] {
+      const textNodes: Text[] = [];
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (node.nodeValue && node.nodeValue.trim().length > 0) {
+          textNodes.push(node as Text);
+        }
+      } else {
+        if (
+          node.nodeName !== "SCRIPT" &&
+          node.nodeName !== "STYLE" &&
+          node.nodeName !== "svg" &&
+          (node as Element).namespaceURI !== "http://www.w3.org/2000/svg"
+        ) {
+          node.childNodes.forEach((child) => {
+            textNodes.push(...getTextNodes(child));
+          });
+        }
+      }
+      return textNodes;
+    }
+
+    const textNodes = getTextNodes(el);
+
+    textNodes.forEach((node) => {
+      const targetText = node.nodeValue || "";
+      const length = targetText.length;
+      if (length === 0) return;
+
+      const queue: { to: string; start: number; end: number; char: string }[] = [];
+      for (let i = 0; i < length; i++) {
+        const to = targetText[i];
+        const start = Math.floor(Math.random() * 15);
+        const end = start + Math.floor(Math.random() * 20) + 8;
+        queue.push({ to, start, end, char: "" });
+      }
+
+      let frame = 0;
+      const update = () => {
+        let output = "";
+        let complete = 0;
+
+        for (let i = 0; i < length; i++) {
+          const item = queue[i];
+          if (frame >= item.end) {
+            complete++;
+            output += item.to;
+          } else if (frame >= item.start) {
+            if (!item.char || Math.random() < 0.28) {
+              item.char = chars[Math.floor(Math.random() * chars.length)];
+            }
+            output += item.char;
+          } else {
+            output += " ";
+          }
+        }
+
+        node.nodeValue = output;
+
+        if (complete < length) {
+          requestAnimationFrame(update);
+          frame++;
+        }
+      };
+
+      update();
+    });
+  };
+
   const startClock = () => {
     updateTime();
     
@@ -233,4 +304,12 @@ const iconMap = {
 
   // Run initial setup and listen to subsequent page transition updates
   document.addEventListener("astro:page-load", startClock);
+
+  // Trigger scramble on client transitions
+  document.addEventListener("astro:after-swap", () => {
+    document.documentElement.classList.add("navigated");
+    document.querySelectorAll("[data-scramble]").forEach((el) => {
+      scrambleElement(el as HTMLElement);
+    });
+  });
 </script>
