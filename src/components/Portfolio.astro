@@ -1,0 +1,236 @@
+---
+import type { Locale } from "../utils/i18n";
+import { translations } from "../utils/i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { customLinks, socialLinks } from "../config/links";
+import pcLogo from "../assets/pc-logo.svg?raw";
+import peLogo from "../assets/pe-logo.svg?raw";
+import fs from "node:fs";
+import path from "node:path";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = translations[lang];
+
+// Read and clean the signature SVG from assets
+const signaturePath = path.resolve("src/assets/firma.svg");
+const signatureSvg = fs.readFileSync(signaturePath, "utf-8")
+  .replace(/width="[^"]*"/, 'class="h-16 w-auto text-stone-500 dark:text-zinc-400 hover:text-stone-800 dark:hover:text-zinc-200 transition-colors duration-300 ease-[var(--ease-spring)]"')
+  .replace(/height="[^"]*"/, "");
+
+// Read and clean the logo SVG from assets
+const logoPath = path.resolve("src/assets/logo.svg");
+const logoSvg = fs.readFileSync(logoPath, "utf-8")
+  .replace(/width="[^"]*"/, 'class="h-8 w-auto text-stone-900 dark:text-zinc-100 transition-colors duration-300 ease-[var(--ease-spring)]"')
+  .replace(/height="[^"]*"/, "");
+
+const iconMap = {
+  pc: pcLogo,
+  pe: peLogo,
+};
+---
+
+<div class="min-h-screen flex flex-col items-center justify-between py-12 px-6 sm:px-8 max-w-xl mx-auto font-sans relative selection:bg-stone-200/80 dark:selection:bg-zinc-800/80">
+  
+  <!-- Header: Monogram & Utility Controls -->
+  <header class="w-full flex items-center justify-between mb-12 fade-in-section delay-0">
+    <a
+      href={lang === "es" ? "/" : `/${lang}`}
+      class="hover:opacity-80 active:scale-95 transition-spring cursor-pointer select-none flex items-center"
+      transition:name="monogram"
+      aria-label="Home"
+      set:html={logoSvg}
+    />
+    
+    <div class="flex items-center gap-3">
+      <LanguageSwitcher activeLang={lang} />
+      <div class="w-[1px] h-4 bg-stone-200 dark:bg-zinc-800"></div>
+      <ThemeToggle />
+    </div>
+  </header>
+
+  <!-- Main Content Profile Area -->
+  <main class="w-full flex-grow flex flex-col justify-start">
+    
+    <!-- Profile & Bio -->
+    <section class="mb-12 flex flex-col items-start fade-in-section delay-1" transition:name="profile-area">
+      <h1 class="text-3xl font-serif font-semibold tracking-tight text-stone-900 dark:text-zinc-100 select-text" transition:name="profile-name">
+        Pablo Portas López
+      </h1>
+      
+      <p class="text-[14px] leading-relaxed text-stone-500 dark:text-zinc-400 mt-3.5 text-balance select-text font-normal" transition:name="profile-bio">
+        {lang === "es" && (
+          <>
+            Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exámenes <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> o <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. A veces escribo en mi <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Mi Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+          </>
+        )}
+        {lang === "en" && (
+          <>
+            Computer Engineering student at UDC 💜🧜🏻‍♀️ (on Erasmus at LNU 💛🇸🇪). I program things in my free time like <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pass me Exams <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> or <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Sometimes I write in my <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="My Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+          </>
+        )}
+        {lang === "gl" && (
+          <>
+            Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (de Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exames <span class="inline-flex items-center justify-center align-middle w-4 h-4 ml-0.5" set:html={peLogo} /></a> ou <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Ás veces escribo no meu <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="O meu Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+          </>
+        )}
+      </p>
+    </section>
+
+    <!-- Social Row -->
+    <section class="flex items-center gap-4 mb-16 fade-in-section delay-2" transition:name="social-links">
+      {
+        socialLinks.map((social) => (
+          <a
+            href={social.href}
+            aria-label={social.label}
+            title={social.label}
+            target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            class="text-stone-400 hover:text-stone-900 dark:text-zinc-500 dark:hover:text-zinc-200 transition-all duration-200 ease-[var(--ease-spring)] hover:scale-108 active:scale-90"
+            data-umami-event="click-social"
+            data-umami-event-network={social.label}
+            data-umami-event-url={social.href}
+            set:html={social.icon}
+          />
+        ))
+      }
+    </section>
+
+    <!-- Directory links -->
+    <section class="w-full space-y-1 fade-in-section delay-3" transition:name="custom-links">
+      {
+        customLinks.map((link) => {
+          const label = link.labelKey ? t.links[link.labelKey] : link.label;
+          return (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center justify-between p-3.5 -mx-3.5 rounded-xl hover:bg-[rgba(28,25,23,0.03)] dark:hover:bg-[rgba(244,244,245,0.03)] border border-transparent hover:border-stone-200/20 dark:hover:border-zinc-800/10 transition-all duration-200 ease-[var(--ease-spring)] active:scale-[0.98] cursor-pointer"
+              data-umami-event="click-link"
+              data-umami-event-title={label}
+              data-umami-event-url={link.href}
+              data-umami-event-category={link.category}
+            >
+              <div class="flex items-center gap-3">
+                {link.iconName && iconMap[link.iconName] ? (
+                  <div class="w-5 h-5 flex items-center justify-center select-none" set:html={iconMap[link.iconName]} />
+                ) : (
+                  <span class="text-base select-none">{link.emoji}</span>
+                )}
+                <span class="text-[14px] font-medium text-stone-700 dark:text-zinc-300 group-hover:text-stone-900 dark:group-hover:text-zinc-100 transition-colors duration-150">
+                  {label}
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] tracking-wider uppercase font-mono text-stone-400 dark:text-zinc-500 group-hover:text-stone-500 dark:group-hover:text-zinc-400 transition-colors duration-150 select-none">
+                  {link.category}
+                </span>
+                <svg
+                  class="w-3.5 h-3.5 text-stone-300 dark:text-zinc-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-stone-500 dark:group-hover:text-zinc-400 transition-all duration-200 ease-[var(--ease-spring)]"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5"></path>
+                </svg>
+              </div>
+            </a>
+          );
+        })
+      }
+    </section>
+
+  </main>
+
+  <!-- Footer with Local Time & Signature -->
+  <footer class="w-full pt-16 flex flex-col items-center gap-3 fade-in-section delay-4 text-center" transition:name="footer-info">
+    <div class="w-12 h-[1px] bg-stone-200 dark:bg-zinc-800 mb-1"></div>
+    
+    <!-- Galicia Local Time -->
+    <p class="text-[11px] font-mono text-stone-400 dark:text-zinc-500 flex items-center gap-1.5 select-none tracking-tight">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500/80 dark:bg-emerald-400/80 animate-pulse"></span>
+      <span id="local-time" class="tabular-nums font-semibold text-stone-500 dark:text-zinc-400">--:--:--</span>
+      <span>{t.timeIn}</span>
+    </p>
+
+    <!-- Letter Signature -->
+    <div class="mt-2 select-none" transition:name="letter-signature">
+      <div set:html={signatureSvg} />
+    </div>
+  </footer>
+</div>
+
+<style>
+  /* Stagger fade-in animations ONLY on initial mount (when html does not have .navigated) */
+  html:not(.navigated) :global(.fade-in-section) {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+
+  /* Stagger delays only on initial mount */
+  html:not(.navigated) :global(.delay-0) { transition-delay: 50ms; }
+  html:not(.navigated) :global(.delay-1) { transition-delay: 120ms; }
+  html:not(.navigated) :global(.delay-2) { transition-delay: 180ms; }
+  html:not(.navigated) :global(.delay-3) { transition-delay: 240ms; }
+  html:not(.navigated) :global(.delay-4) { transition-delay: 300ms; }
+</style>
+
+<script>
+  // Ensure custom property on window is recognized
+  interface Window {
+    clockInterval?: number;
+  }
+
+  const updateTime = () => {
+    const timeElement = document.getElementById("local-time");
+    if (!timeElement) return;
+    
+    try {
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: "Europe/Madrid",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      };
+      
+      const formatter = new Intl.DateTimeFormat([], options);
+      timeElement.textContent = formatter.format(new Date());
+    } catch (e) {
+      // Fallback
+      const date = new Date();
+      timeElement.textContent = date.toLocaleTimeString();
+    }
+  };
+
+  const startClock = () => {
+    updateTime();
+    
+    // Clear any previous interval from a prior page load to prevent duplicate clocks
+    const w = window as unknown as Window;
+    if (w.clockInterval) {
+      clearInterval(w.clockInterval);
+    }
+    
+    w.clockInterval = setInterval(updateTime, 1000) as unknown as number;
+  };
+
+  // Run initial setup and listen to subsequent page transition updates
+  document.addEventListener("astro:page-load", startClock);
+</script>

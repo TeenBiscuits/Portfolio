@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import { translations } from '../../utils/i18n';
+
+const t = translations.en;
+---
+
+<Layout lang="en" title={t.seoTitle} description={t.seoDescription}>
+	<Portfolio lang="en" />
+</Layout>

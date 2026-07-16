@@ -1,11 +1,11 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Portfolio from '../components/Portfolio.astro';
+import { translations } from '../utils/i18n';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const t = translations.es;
 ---
 
-<Layout>
-	<Welcome />
+<Layout lang="es" title={t.seoTitle} description={t.seoDescription}>
+	<Portfolio lang="es" />
 </Layout>

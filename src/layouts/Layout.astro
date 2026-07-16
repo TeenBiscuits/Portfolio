@@ -1,32 +1,117 @@
 ---
 import "../styles/global.css";
 import { Font } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
+
+const {
+  title = "Pablo Portas López",
+  description = "Estudiante de Ingeniería Informática en la UDC 🎓💜💻 de Erasmus en LNU 💛🇸🇪",
+  lang = "es",
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro Basics</title>
-        <Font cssVariable="--font-merriweather" />
-        <Font cssVariable="--font-rubik" />
-        <Font cssVariable="--font-cascadia" />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-    </head>
-    <body>
-        <slot />
-    </body>
-</html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20260716" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260716" />
+    <link rel="shortcut icon" href="/favicon.ico?v=20260716" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260716" />
+    <meta name="apple-mobile-web-app-title" content="Pablo Portas López" />
+    <link rel="manifest" href="/site.webmanifest?v=20260716" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`https://www.pablopl.dev${lang === 'es' ? '' : `/${lang}`}`} />
+    <link rel="alternate" hreflang="es" href="https://www.pablopl.dev/" />
+    <link rel="alternate" hreflang="en" href="https://www.pablopl.dev/en" />
+    <link rel="alternate" hreflang="gl" href="https://www.pablopl.dev/gl" />
+    <link rel="alternate" hreflang="x-default" href="https://www.pablopl.dev/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://www.pablopl.dev${lang === 'es' ? '' : `/${lang}`}`} />
+    <meta property="og:image" content="https://www.pablopl.dev/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.pablopl.dev/og.png" />
+    
+    <!-- Fonts -->
+    <Font cssVariable="--font-merriweather" />
+    <Font cssVariable="--font-rubik" />
+    <Font cssVariable="--font-cascadia" />
+    
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
 
-<style>
-    html,
-    body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
+    <!-- Self Hosted Umami Analytics -->
+    <script defer src="https://analytics.pablopl.dev/script.js" data-website-id="9707422a-089b-4815-9b7b-492c23add947" data-domains="www.pablopl.dev"></script>
+    <!-- Ahrefs Analytics -->
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="41AHUOkOrsmT26f+Ow8zaQ" async></script>
+
+    <!-- Theme Inline Script to prevent theme flashing (FOUT) -->
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      };
+      
+      const theme = getTheme();
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script>
+      const applyTheme = () => {
+        const theme = localStorage.getItem("theme") || 
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      };
+
+      // Persist theme and add navigated class after swaps
+      document.addEventListener("astro:after-swap", () => {
+        applyTheme();
+        document.documentElement.classList.add("navigated");
+      });
+
+      // Add navigated class to initial load after animations complete (1000ms)
+      const setupNavigated = () => {
+        setTimeout(() => {
+          document.documentElement.classList.add("navigated");
+        }, 1000);
+      };
+
+      // Run on page load
+      document.addEventListener("astro:page-load", setupNavigated);
+    </script>
+  </head>
+  <body class="selection:bg-stone-200 dark:selection:bg-zinc-800 transition-colors duration-200">
+    <slot />
+  </body>
+</html>
