@@ -29,8 +29,6 @@ const locales: { code: Locale; label: string; href: string }[] = [
               ? "bg-white dark:bg-zinc-800 text-stone-900 dark:text-zinc-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-stone-200/20 dark:border-zinc-700/30 font-semibold"
               : "text-stone-500 hover:text-stone-800 dark:text-zinc-400 dark:hover:text-zinc-200 hover:bg-[rgba(28,25,23,0.03)] dark:hover:bg-[rgba(244,244,245,0.03)] border border-transparent"
           }`}
-          data-umami-event="change-language"
-          data-umami-event-lang={locale.code}
           transition:name={isActive ? "active-locale-pill" : undefined}
         >
           {locale.label}
