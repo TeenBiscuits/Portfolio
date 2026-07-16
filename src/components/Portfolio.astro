@@ -220,7 +220,7 @@ const iconMap = {
   };
 
   const scrambleElement = (el: HTMLElement) => {
-    const chars = "µ§¥🧜🏻‍♀️🇸🇪💜💛🧜🏻‍♂️LNUUDCabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:\"<>?`-=[]\\;',./";
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     function getTextNodes(node: Node): Text[] {
       const textNodes: Text[] = [];
@@ -269,12 +269,16 @@ const iconMap = {
             complete++;
             output += item.to;
           } else if (frame >= item.start) {
-            if (!item.char || Math.random() < 0.28) {
-              item.char = chars[Math.floor(Math.random() * chars.length)];
+            if (!item.char || Math.random() < 0.08) {
+              if (item.to === " ") {
+                item.char = " ";
+              } else {
+                item.char = chars[Math.floor(Math.random() * chars.length)];
+              }
             }
             output += item.char;
           } else {
-            output += " ";
+            output += item.to;
           }
         }
 
