@@ -298,9 +298,11 @@ const iconMap = {
   // Run initial setup and listen to subsequent page transition updates
   document.addEventListener("astro:page-load", () => {
     startClock();
-    document.querySelectorAll("[data-scramble]").forEach((el) => {
-      scrambleElement(el as HTMLElement);
-    });
+    if (document.documentElement.classList.contains("navigated")) {
+      document.querySelectorAll("[data-scramble]").forEach((el) => {
+        scrambleElement(el as HTMLElement);
+      });
+    }
   });
 
   // Track client transitions
