@@ -21,6 +21,10 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts: inlined as early as possible for earliest font discovery -->
+    <Font cssVariable="--font-merriweather" preload />
+    <Font cssVariable="--font-rubik" preload />
+    <Font cssVariable="--font-cascadia" />
     <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20260716" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260716" />
     <link rel="shortcut icon" href="/favicon.ico?v=20260716" />
@@ -53,11 +57,6 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://www.pablopl.dev/og.png" />
-    
-    <!-- Fonts -->
-    <Font cssVariable="--font-merriweather" />
-    <Font cssVariable="--font-rubik" preload />
-    <Font cssVariable="--font-cascadia" />
     
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
