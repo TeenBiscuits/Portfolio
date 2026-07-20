@@ -1,0 +1,36 @@
+---
+import type { PreviewKey } from "../config/previews";
+import PreviewCard from "./PreviewCard.astro";
+
+interface Props {
+  href: string;
+  site: PreviewKey;
+  umamiTitle: string;
+}
+
+const { href, site, umamiTitle } = Astro.props;
+---
+
+<span class="preview-link pl-trigger">
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-colors duration-200 cursor-pointer"
+    data-umami-event="click-link"
+    data-umami-event-title={umamiTitle}
+    data-umami-event-url={href}
+    data-umami-event-category="Bio Link"
+  >
+    <slot />
+  </a>
+
+  <PreviewCard site={site} />
+</span>
+
+<style>
+  .preview-link {
+    position: relative;
+    display: inline-block;
+  }
+</style>

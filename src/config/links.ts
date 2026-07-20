@@ -1,3 +1,5 @@
+import type { PreviewKey } from "./previews";
+
 export interface CustomLink {
   href: string;
   labelKey?: "blog" | "cv" | "code" | "donar" | "exams"; // maps to translation keys
@@ -5,6 +7,7 @@ export interface CustomLink {
   category: string;
   emoji?: string;
   iconName?: "pc" | "pe";
+  previewKey?: PreviewKey; // site preview shown on hover tooltip
 }
 
 export interface SocialLink {
@@ -19,30 +22,35 @@ export const customLinks: CustomLink[] = [
     labelKey: "blog",
     category: "Blog",
     emoji: "✍️",
+    previewKey: "blog",
   },
   {
     href: "https://cv.pablopl.dev",
     labelKey: "cv",
     category: "CV",
     emoji: "📋",
+    previewKey: "cv",
   },
   {
     href: "https://pc.pablopl.dev",
     labelKey: "code",
     category: "Academic",
     iconName: "pc",
+    previewKey: "pc",
   },
   {
     href: "https://pe.pablopl.dev",
     labelKey: "exams",
     category: "Academic",
     iconName: "pe",
+    previewKey: "pe",
   },
   {
     href: "https://realorai.pablopl.dev/",
     label: "RealOrAI",
     category: "Game",
     emoji: "🍌",
+    previewKey: "realorai",
   },
 ];
 

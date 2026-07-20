@@ -1,0 +1,313 @@
+---
+import { sitePreviews, type PreviewKey } from "../config/previews";
+
+interface Props {
+  site: PreviewKey;
+}
+
+const { site } = Astro.props;
+const preview = sitePreviews[site];
+---
+
+<!--
+  Floating site preview that follows the cursor (spring-smoothed).
+  Purely visual: aria-hidden + pointer-events none. The parent .pl-trigger
+  shows it on hover / keyboard focus. Without JS (or reduced motion) it
+  stays statically centered above the trigger.
+-->
+<span class="pl-pos" data-pl-pos>
+  <span class="pl-card" aria-hidden="true">
+    <span class="pl-chrome">
+      <span class="pl-lights"><i></i><i></i><i></i></span>
+      <span class="pl-title">{preview.domain}</span>
+    </span>
+    {
+      preview.video ? (
+        <video
+          class="pl-media"
+          muted
+          loop
+          playsinline
+          preload="none"
+          width={preview.video.width}
+          height={preview.video.height}
+          poster={preview.video.poster}
+          data-preview-video
+        >
+          <source src={preview.video.webm} type="video/webm" />
+          <source src={preview.video.mp4} type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          class="pl-media"
+          src={preview.image!.src}
+          width={preview.image!.width}
+          height={preview.image!.height}
+          loading="lazy"
+          decoding="async"
+          alt=""
+        />
+      )
+    }
+  </span>
+</span>
+
+<style is:global>
+  /* Positioning handle: a zero-cost point the JS spring moves with transform.
+     Defaults to statically centered above the trigger (no-JS / keyboard). */
+  .pl-pos {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .pl-card {
+    display: block;
+    width: 260px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+      0 12px 32px -8px rgba(28, 25, 23, 0.18),
+      0 2px 8px -2px rgba(28, 25, 23, 0.08);
+    outline: 1px solid rgba(28, 25, 23, 0.08);
+
+    /* Anchored above the cursor/trigger point, scaling from that origin */
+    transform-origin: 50% 100%;
+
+    /* Hidden state: slightly shrunk + dipped */
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, calc(-100% - 8px)) scale(0.96);
+
+    /* Exit: snappy system response (faster than the entrance) */
+    transition:
+      opacity 140ms var(--ease-spring),
+      transform 140ms var(--ease-spring),
+      visibility 0s linear 140ms;
+  }
+
+  .dark .pl-card {
+    background: #18181b;
+    box-shadow:
+      0 12px 32px -8px rgba(0, 0, 0, 0.6),
+      0 2px 8px -2px rgba(0, 0, 0, 0.4);
+    outline-color: rgba(244, 244, 245, 0.1);
+  }
+
+  /* Original aspect ratio preserved via the element's intrinsic dimensions */
+  .pl-media {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #f5f5f4;
+  }
+
+  .dark .pl-media {
+    background: #27272a;
+  }
+
+  /* macOS window chrome: title bar with traffic lights, domain as title */
+  .pl-chrome {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 10px;
+    background: linear-gradient(#f5f5f7, #e9e9ec);
+    border-bottom: 1px solid rgba(28, 25, 23, 0.09);
+  }
+
+  .dark .pl-chrome {
+    background: linear-gradient(#3a3a3e, #313135);
+    border-bottom-color: rgba(0, 0, 0, 0.45);
+  }
+
+  .pl-lights {
+    display: flex;
+    gap: 5px;
+  }
+
+  .pl-lights i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+  }
+
+  .pl-lights i:nth-child(1) { background: #ff5f57; }
+  .pl-lights i:nth-child(2) { background: #febc2e; }
+  .pl-lights i:nth-child(3) { background: #28c840; }
+
+  .pl-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #4a4a4e;
+    white-space: nowrap;
+  }
+
+  .dark .pl-title {
+    color: #d9d9de;
+  }
+
+  /* Entrance: only where hover truly exists (no false hovers from touch).
+     Deliberate, slightly slower than the exit, with a small intent delay. */
+  @media (hover: hover) and (pointer: fine) {
+    .pl-trigger:hover > .pl-pos .pl-card,
+    .pl-trigger:focus-visible > .pl-pos .pl-card,
+    .pl-trigger:has(a:focus-visible) > .pl-pos .pl-card {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, calc(-100% - 14px)) scale(1);
+      will-change: transform, opacity;
+      transition:
+        opacity 180ms var(--ease-spring) 100ms,
+        transform 180ms var(--ease-spring) 100ms,
+        visibility 0s linear 100ms;
+    }
+  }
+
+  /* Reduced motion: gentle crossfade, statically centered, no following */
+  @media (prefers-reduced-motion: reduce) {
+    .pl-card {
+      transform: translate(-50%, calc(-100% - 14px));
+      transition:
+        opacity 150ms ease,
+        visibility 0s linear 150ms;
+    }
+    .pl-trigger:hover > .pl-pos .pl-card,
+    .pl-trigger:focus-visible > .pl-pos .pl-card,
+    .pl-trigger:has(a:focus-visible) > .pl-pos .pl-card {
+      transform: translate(-50%, calc(-100% - 14px));
+    }
+  }
+</style>
+
+<script>
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  // Critically damped spring (damping ratio ~1.0, response ~0.35s) — the
+  // Apple-style "move/reposition" feel: the card glides after the cursor
+  // with momentum instead of being glued to it, and never overshoots.
+  const STIFFNESS = 170;
+  const DAMPING = 2 * Math.sqrt(STIFFNESS); // critical damping
+
+  class Spring {
+    #x: number;
+    #v = 0;
+    constructor(initial: number) {
+      this.#x = initial;
+    }
+    step(target: number, dt: number) {
+      const force = -STIFFNESS * (this.#x - target) - DAMPING * this.#v;
+      this.#v += force * dt;
+      this.#x += this.#v * dt;
+      return this.#x;
+    }
+    settled(target: number) {
+      return Math.abs(this.#x - target) < 0.05 && Math.abs(this.#v) < 0.05;
+    }
+  }
+
+  const setupPreviewCards = () => {
+    if (!finePointer.matches) return;
+
+    document.querySelectorAll(".pl-trigger").forEach((el) => {
+      const trigger = el as HTMLElement;
+      if (trigger.dataset.plBound) return;
+      trigger.dataset.plBound = "true";
+
+      const pos = trigger.querySelector("[data-pl-pos]") as HTMLElement | null;
+      if (!pos) return;
+      const video = trigger.querySelector("[data-preview-video]") as HTMLVideoElement | null;
+
+      let raf = 0;
+      let last = 0;
+      let following = false;
+      let targetX = 0;
+      let targetY = 0;
+      let springX: Spring | null = null;
+      let springY: Spring | null = null;
+
+      const tick = (now: number) => {
+        if (!springX || !springY) {
+          raf = 0;
+          return;
+        }
+        const dt = Math.min((now - last) / 1000, 0.05); // clamp tab-switch jumps
+        last = now;
+        const x = springX.step(targetX, dt);
+        const y = springY.step(targetY, dt);
+        pos.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        // Sleep once settled; the next mousemove wakes the loop
+        raf = springX.settled(targetX) && springY.settled(targetY) ? 0 : requestAnimationFrame(tick);
+      };
+
+      const wake = () => {
+        if (!raf) {
+          last = performance.now();
+          raf = requestAnimationFrame(tick);
+        }
+      };
+
+      const startFollowing = (e: MouseEvent) => {
+        following = true;
+        const rect = trigger.getBoundingClientRect();
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+        // Snap to the entry point: the card never flies in from a corner
+        springX = new Spring(targetX);
+        springY = new Spring(targetY);
+        pos.style.left = "0px";
+        pos.style.willChange = "transform";
+        pos.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
+        wake();
+      };
+
+      trigger.addEventListener("mouseenter", (e) => {
+        startFollowing(e);
+        if (video && !reducedMotion.matches) video.play().catch(() => {});
+      });
+
+      trigger.addEventListener("mousemove", (e) => {
+        if (!following) startFollowing(e); // e.g. after a keyboard-focus reset
+        const rect = trigger.getBoundingClientRect();
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+        wake();
+      });
+
+      trigger.addEventListener("mouseleave", () => {
+        following = false;
+        springX = springY = null;
+        cancelAnimationFrame(raf);
+        raf = 0;
+        pos.style.willChange = "";
+        video?.pause();
+      });
+
+      // Keyboard focus: reset to the statically centered CSS position
+      trigger.addEventListener("focusin", () => {
+        following = false;
+        springX = springY = null;
+        cancelAnimationFrame(raf);
+        raf = 0;
+        pos.style.left = "";
+        pos.style.transform = "";
+        pos.style.willChange = "";
+        if (video && !reducedMotion.matches) video.play().catch(() => {});
+      });
+      trigger.addEventListener("focusout", () => video?.pause());
+    });
+  };
+
+  document.addEventListener("astro:page-load", setupPreviewCards);
+</script>

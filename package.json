@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "previews": "bash scripts/optimize-previews.sh",
     "format": "prettier . --write --plugin=prettier-plugin-tailwindcss"
   },
   "dependencies": {

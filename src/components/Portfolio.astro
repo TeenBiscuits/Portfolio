@@ -3,6 +3,8 @@ import type { Locale } from "../utils/i18n";
 import { translations } from "../utils/i18n";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import PreviewLink from "./PreviewLink.astro";
+import PreviewCard from "./PreviewCard.astro";
 import { customLinks, socialLinks } from "../config/links";
 import pcLogo from "../assets/pc-logo.svg";
 import peLogo from "../assets/pe-logo.svg";
@@ -54,17 +56,17 @@ const iconMap = {
       <p class="text-[14px] leading-relaxed text-stone-500 dark:text-zinc-400 mt-3.5 text-balance select-text font-normal" transition:name="profile-bio" data-scramble>
         {lang === "es" && (
           <>
-            Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (hice Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exámenes <img src={peLogo.src} class="inline-block w-4 h-4 ml-0.5 align-text-bottom" alt="" /></a> o <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. A veces escribo en mi <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Mi Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+            Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (hice Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como <PreviewLink href="https://pe.pablopl.dev" site="pe" umamiTitle="Pásame Exámenes">Pásame Exámenes <img src={peLogo.src} class="inline-block w-4 h-4 ml-0.5 align-text-bottom" alt="" /></PreviewLink> o <PreviewLink href="https://realorai.pablopl.dev/" site="realorai" umamiTitle="RealOrAI">RealOrAI 🍌</PreviewLink>. A veces escribo en mi <PreviewLink href="https://blog.pablopl.dev" site="blog" umamiTitle="Mi Blog">blog ✍️</PreviewLink>.
           </>
         )}
         {lang === "en" && (
           <>
-            Computer Engineering student at UDC 💜🧜🏻‍♀️ (did Erasmus at LNU 💛🇸🇪). I program things in my free time like <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pass me Exams <img src={peLogo.src} class="inline-block w-4 h-4 ml-0.5 align-text-bottom" alt="" /></a> or <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Sometimes I write in my <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="My Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+            Computer Engineering student at UDC 💜🧜🏻‍♀️ (did Erasmus at LNU 💛🇸🇪). I program things in my free time like <PreviewLink href="https://pe.pablopl.dev" site="pe" umamiTitle="Pásame Exámenes">Pass me Exams <img src={peLogo.src} class="inline-block w-4 h-4 ml-0.5 align-text-bottom" alt="" /></PreviewLink> or <PreviewLink href="https://realorai.pablopl.dev/" site="realorai" umamiTitle="RealOrAI">RealOrAI 🍌</PreviewLink>. Sometimes I write in my <PreviewLink href="https://blog.pablopl.dev" site="blog" umamiTitle="My Blog">blog ✍️</PreviewLink>.
           </>
         )}
         {lang === "gl" && (
           <>
-            Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (fixen Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como <a href="https://pe.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="Pásame Exámenes" data-umami-event-url="https://pe.pablopl.dev" data-umami-event-category="Bio Link">Pásame Exames <img src={peLogo.src} class="inline-block w-4 h-4 ml-0.5 align-text-bottom" alt="" /></a> ou <a href="https://realorai.pablopl.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="RealOrAI" data-umami-event-url="https://realorai.pablopl.dev/" data-umami-event-category="Bio Link">RealOrAI 🍌</a>. Ás veces escribo no meu <a href="https://blog.pablopl.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 font-medium text-stone-900 dark:text-zinc-100 hover:text-stone-700 dark:hover:text-zinc-300 underline decoration-stone-300 dark:decoration-zinc-700 hover:decoration-stone-500 dark:hover:decoration-zinc-500 transition-all duration-200 cursor-pointer" data-umami-event="click-link" data-umami-event-title="O meu Blog" data-umami-event-url="https://blog.pablopl.dev" data-umami-event-category="Bio Link">blog ✍️</a>.
+            Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (fixen Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como <PreviewLink href="https://pe.pablopl.dev" site="pe" umamiTitle="Pásame Exámenes">Pásame Exames <img src={peLogo.src} class="inline-block w-4 h-4 ml-0.5 align-text-bottom" alt="" /></PreviewLink> ou <PreviewLink href="https://realorai.pablopl.dev/" site="realorai" umamiTitle="RealOrAI">RealOrAI 🍌</PreviewLink>. Ás veces escribo no meu <PreviewLink href="https://blog.pablopl.dev" site="blog" umamiTitle="O meu Blog">blog ✍️</PreviewLink>.
           </>
         )}
       </p>
@@ -100,7 +102,7 @@ const iconMap = {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center justify-between p-3.5 -mx-3.5 rounded-xl hover:bg-[rgba(28,25,23,0.03)] dark:hover:bg-[rgba(244,244,245,0.03)] border border-transparent hover:border-stone-200/20 dark:hover:border-zinc-800/10 transition-all duration-200 ease-[var(--ease-spring)] active:scale-[0.98] cursor-pointer"
+              class="pl-trigger group relative flex items-center justify-between p-3.5 -mx-3.5 rounded-xl hover:bg-[rgba(28,25,23,0.03)] dark:hover:bg-[rgba(244,244,245,0.03)] border border-transparent hover:border-stone-200/20 dark:hover:border-zinc-800/10 transition-[background-color,border-color,transform] duration-200 ease-[var(--ease-spring)] active:scale-[0.98] cursor-pointer"
               data-umami-event="click-link"
               data-umami-event-title={label}
               data-umami-event-url={link.href}
@@ -133,6 +135,8 @@ const iconMap = {
                   <path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5"></path>
                 </svg>
               </div>
+
+              {link.previewKey && <PreviewCard site={link.previewKey} />}
             </a>
           );
         })
