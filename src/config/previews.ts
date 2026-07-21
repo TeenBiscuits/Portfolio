@@ -1,13 +1,23 @@
-import peMp4 from "../assets/previews/pe.mp4";
-import peWebm from "../assets/previews/pe.webm";
-import pePoster from "../assets/previews/pe-poster.webp";
-import pcMp4 from "../assets/previews/pc.mp4";
-import pcWebm from "../assets/previews/pc.webm";
-import pcPoster from "../assets/previews/pc-poster.webp";
-import blogMp4 from "../assets/previews/blog.mp4";
-import blogWebm from "../assets/previews/blog.webm";
-import blogPoster from "../assets/previews/blog-poster.webp";
-import cvImage from "../assets/previews/cv.webp";
+import peLightMp4 from "../assets/previews/pe-light.mp4";
+import peLightWebm from "../assets/previews/pe-light.webm";
+import peLightPoster from "../assets/previews/pe-light-poster.webp";
+import peDarkMp4 from "../assets/previews/pe-dark.mp4";
+import peDarkWebm from "../assets/previews/pe-dark.webm";
+import peDarkPoster from "../assets/previews/pe-dark-poster.webp";
+import pcLightMp4 from "../assets/previews/pc-light.mp4";
+import pcLightWebm from "../assets/previews/pc-light.webm";
+import pcLightPoster from "../assets/previews/pc-light-poster.webp";
+import pcDarkMp4 from "../assets/previews/pc-dark.mp4";
+import pcDarkWebm from "../assets/previews/pc-dark.webm";
+import pcDarkPoster from "../assets/previews/pc-dark-poster.webp";
+import blogLightMp4 from "../assets/previews/blog-light.mp4";
+import blogLightWebm from "../assets/previews/blog-light.webm";
+import blogLightPoster from "../assets/previews/blog-light-poster.webp";
+import blogDarkMp4 from "../assets/previews/blog-dark.mp4";
+import blogDarkWebm from "../assets/previews/blog-dark.webm";
+import blogDarkPoster from "../assets/previews/blog-dark-poster.webp";
+import cvLightImage from "../assets/previews/cv-light.webp";
+import cvDarkImage from "../assets/previews/cv-dark.webp";
 import realoraiImage from "../assets/previews/realorai.webp";
 
 export type PreviewKey = "pe" | "pc" | "blog" | "cv" | "realorai";
@@ -22,29 +32,104 @@ export interface SitePreview {
   image?: { src: string; width: number; height: number };
 }
 
-export const sitePreviews: Record<PreviewKey, SitePreview> = {
+export interface ThemePreview {
+  light: SitePreview;
+  dark?: SitePreview;
+}
+
+export const sitePreviews: Record<PreviewKey, ThemePreview> = {
   pe: {
-    domain: "pe.pablopl.dev",
-    video: { webm: peWebm, mp4: peMp4, poster: pePoster.src, width: pePoster.width, height: pePoster.height },
+    light: {
+      domain: "pe.pablopl.dev",
+      video: {
+        webm: peLightWebm,
+        mp4: peLightMp4,
+        poster: peLightPoster.src,
+        width: peLightPoster.width,
+        height: peLightPoster.height,
+      },
+    },
+    dark: {
+      domain: "pe.pablopl.dev",
+      video: {
+        webm: peDarkWebm,
+        mp4: peDarkMp4,
+        poster: peDarkPoster.src,
+        width: peDarkPoster.width,
+        height: peDarkPoster.height,
+      },
+    },
   },
   pc: {
-    domain: "pc.pablopl.dev",
-    video: { webm: pcWebm, mp4: pcMp4, poster: pcPoster.src, width: pcPoster.width, height: pcPoster.height },
+    light: {
+      domain: "pc.pablopl.dev",
+      video: {
+        webm: pcLightWebm,
+        mp4: pcLightMp4,
+        poster: pcLightPoster.src,
+        width: pcLightPoster.width,
+        height: pcLightPoster.height,
+      },
+    },
+    dark: {
+      domain: "pc.pablopl.dev",
+      video: {
+        webm: pcDarkWebm,
+        mp4: pcDarkMp4,
+        poster: pcDarkPoster.src,
+        width: pcDarkPoster.width,
+        height: pcDarkPoster.height,
+      },
+    },
   },
   blog: {
-    domain: "blog.pablopl.dev",
-    video: { webm: blogWebm, mp4: blogMp4, poster: blogPoster.src, width: blogPoster.width, height: blogPoster.height },
+    light: {
+      domain: "blog.pablopl.dev",
+      video: {
+        webm: blogLightWebm,
+        mp4: blogLightMp4,
+        poster: blogLightPoster.src,
+        width: blogLightPoster.width,
+        height: blogLightPoster.height,
+      },
+    },
+    dark: {
+      domain: "blog.pablopl.dev",
+      video: {
+        webm: blogDarkWebm,
+        mp4: blogDarkMp4,
+        poster: blogDarkPoster.src,
+        width: blogDarkPoster.width,
+        height: blogDarkPoster.height,
+      },
+    },
   },
   cv: {
-    domain: "cv.pablopl.dev",
-    image: { src: cvImage.src, width: cvImage.width, height: cvImage.height },
+    light: {
+      domain: "cv.pablopl.dev",
+      image: {
+        src: cvLightImage.src,
+        width: cvLightImage.width,
+        height: cvLightImage.height,
+      },
+    },
+    dark: {
+      domain: "cv.pablopl.dev",
+      image: {
+        src: cvDarkImage.src,
+        width: cvDarkImage.width,
+        height: cvDarkImage.height,
+      },
+    },
   },
   realorai: {
-    domain: "realorai.pablopl.dev",
-    image: {
-      src: realoraiImage.src,
-      width: realoraiImage.width,
-      height: realoraiImage.height,
+    light: {
+      domain: "realorai.pablopl.dev",
+      image: {
+        src: realoraiImage.src,
+        width: realoraiImage.width,
+        height: realoraiImage.height,
+      },
     },
   },
 };

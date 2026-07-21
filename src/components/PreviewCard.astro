@@ -7,6 +7,7 @@ interface Props {
 
 const { site } = Astro.props;
 const preview = sitePreviews[site];
+const hasDark = preview.dark != null;
 ---
 
 <!--
@@ -19,30 +20,75 @@ const preview = sitePreviews[site];
   <span class="pl-card" aria-hidden="true">
     <span class="pl-chrome">
       <span class="pl-lights"><i></i><i></i><i></i></span>
-      <span class="pl-title">{preview.domain}</span>
+      <span class="pl-title">{preview.light.domain}</span>
     </span>
     {
-      preview.video ? (
-        <video
-          class="pl-media"
-          muted
-          loop
-          playsinline
-          preload="none"
-          width={preview.video.width}
-          height={preview.video.height}
-          poster={preview.video.poster}
-          data-preview-video
-        >
-          <source src={preview.video.webm} type="video/webm" />
-          <source src={preview.video.mp4} type="video/mp4" />
-        </video>
+      preview.light.video ? (
+        hasDark ? (
+          <>
+            <video
+              class="pl-media pl-media-light"
+              muted loop playsinline preload="none"
+              width={preview.light.video.width}
+              height={preview.light.video.height}
+              poster={preview.light.video.poster}
+              data-preview-video
+            >
+              <source src={preview.light.video.webm} type="video/webm" />
+              <source src={preview.light.video.mp4} type="video/mp4" />
+            </video>
+            <video
+              class="pl-media pl-media-dark"
+              muted loop playsinline preload="none"
+              width={preview.dark!.video!.width}
+              height={preview.dark!.video!.height}
+              poster={preview.dark!.video!.poster}
+              data-preview-video
+            >
+              <source src={preview.dark!.video!.webm} type="video/webm" />
+              <source src={preview.dark!.video!.mp4} type="video/mp4" />
+            </video>
+          </>
+        ) : (
+          <video
+            class="pl-media"
+            muted loop playsinline preload="none"
+            width={preview.light.video.width}
+            height={preview.light.video.height}
+            poster={preview.light.video.poster}
+            data-preview-video
+          >
+            <source src={preview.light.video.webm} type="video/webm" />
+            <source src={preview.light.video.mp4} type="video/mp4" />
+          </video>
+        )
+      ) : hasDark ? (
+        <>
+          <img
+            class="pl-media pl-media-light"
+            src={preview.light.image!.src}
+            width={preview.light.image!.width}
+            height={preview.light.image!.height}
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
+          <img
+            class="pl-media pl-media-dark"
+            src={preview.dark!.image!.src}
+            width={preview.dark!.image!.width}
+            height={preview.dark!.image!.height}
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
+        </>
       ) : (
         <img
           class="pl-media"
-          src={preview.image!.src}
-          width={preview.image!.width}
-          height={preview.image!.height}
+          src={preview.light.image!.src}
+          width={preview.light.image!.width}
+          height={preview.light.image!.height}
           loading="lazy"
           decoding="async"
           alt=""
@@ -107,6 +153,20 @@ const preview = sitePreviews[site];
 
   .dark .pl-media {
     background: #27272a;
+  }
+
+  /* Theme-aware media toggling: light variant is default, dark shown when html.dark */
+  .pl-media-light {
+    display: block;
+  }
+  .pl-media-dark {
+    display: none;
+  }
+  .dark .pl-media-light {
+    display: none;
+  }
+  .dark .pl-media-dark {
+    display: block;
   }
 
   /* macOS window chrome: title bar with traffic lights, domain as title */
@@ -235,7 +295,7 @@ const preview = sitePreviews[site];
 
       const pos = trigger.querySelector("[data-pl-pos]") as HTMLElement | null;
       if (!pos) return;
-      const video = trigger.querySelector("[data-preview-video]") as HTMLVideoElement | null;
+      const videos = trigger.querySelectorAll<HTMLVideoElement>("[data-preview-video]");
 
       let raf = 0;
       let last = 0;
@@ -244,6 +304,13 @@ const preview = sitePreviews[site];
       let targetY = 0;
       let springX: Spring | null = null;
       let springY: Spring | null = null;
+
+      const getVisibleVideo = () => {
+        for (const v of videos) {
+          if (getComputedStyle(v).display !== "none") return v;
+        }
+        return null;
+      };
 
       const tick = (now: number) => {
         if (!springX || !springY) {
@@ -282,6 +349,7 @@ const preview = sitePreviews[site];
 
       trigger.addEventListener("mouseenter", (e) => {
         startFollowing(e);
+        const video = getVisibleVideo();
         if (video && !reducedMotion.matches) video.play().catch(() => {});
       });
 
@@ -299,7 +367,7 @@ const preview = sitePreviews[site];
         cancelAnimationFrame(raf);
         raf = 0;
         pos.style.willChange = "";
-        video?.pause();
+        getVisibleVideo()?.pause();
       });
 
       // Keyboard focus: reset to the statically centered CSS position
@@ -311,9 +379,10 @@ const preview = sitePreviews[site];
         pos.style.left = "";
         pos.style.transform = "";
         pos.style.willChange = "";
+        const video = getVisibleVideo();
         if (video && !reducedMotion.matches) video.play().catch(() => {});
       });
-      trigger.addEventListener("focusout", () => video?.pause());
+      trigger.addEventListener("focusout", () => getVisibleVideo()?.pause());
     });
   };
 
