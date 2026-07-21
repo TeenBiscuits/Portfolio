@@ -295,7 +295,13 @@ const hasDark = preview.dark != null;
 
       const pos = trigger.querySelector("[data-pl-pos]") as HTMLElement | null;
       if (!pos) return;
-      const videos = trigger.querySelectorAll<HTMLVideoElement>("[data-preview-video]");
+
+      // Safari corrupts <video> elements inside view-transition named elements
+      // so badly that even the poster won't render. Replacing the entire node
+      // via outerHTML forces the browser to build a fresh element from scratch.
+      trigger.querySelectorAll<HTMLVideoElement>("[data-preview-video]").forEach((v) => {
+        v.outerHTML = v.outerHTML;
+      });
 
       let raf = 0;
       let last = 0;
@@ -306,7 +312,7 @@ const hasDark = preview.dark != null;
       let springY: Spring | null = null;
 
       const getVisibleVideo = () => {
-        for (const v of videos) {
+        for (const v of trigger.querySelectorAll<HTMLVideoElement>("[data-preview-video]")) {
           if (getComputedStyle(v).display !== "none") return v;
         }
         return null;
