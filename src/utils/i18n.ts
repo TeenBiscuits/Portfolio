@@ -3,7 +3,7 @@ export type Locale = "es" | "en" | "gl";
 export const translations = {
   es: {
     title: "Pablo Portas López",
-    bio: "Estudiante de Ingeniería Informática en la UDC 💜🧜🏻‍♀️ (hice Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como Pásame Exámenes o RealOrAI. A veces escribo en mi blog.",
+    bio: "Estudiante de Ingeniería Informática en la UDC 💜🇪🇸 (hice Erasmus en LNU 💛🇸🇪). Programo cosas en mi tiempo libre como Pásame Exámenes o RealOrAI. A veces escribo en mi blog.",
     seoTitle: "Pablo Portas López | Estudiante de Ingeniería Informática",
     seoDescription:
       "Descubre el portfolio de Pablo Portas López, estudiante de Ingeniería Informática en la UDC y LNU. Programo en mi tiempo libre cosas como Pásame Exámenes o RealOrAI, y escribo en mi blog.",
@@ -19,12 +19,12 @@ export const translations = {
       donar: "Donar",
       exams: "Pásame Exámenes",
     },
-    timeIn: "en Galicia, España",
+    timeIn: "en Galicia 🧜🏻‍♀️, España 🇪🇸",
     builtWith: "Creado con Astro",
   },
   en: {
     title: "Pablo Portas López",
-    bio: "Computer Engineering student at UDC 💜🧜🏻‍♀️ (did Erasmus at LNU 💛🇸🇪). I program things in my free time like Pass me Exams or RealOrAI. Sometimes I write in my blog.",
+    bio: "Computer Engineering student at UDC 💜🇪🇸 (did Erasmus at LNU 💛🇸🇪). I program things in my free time like Pass me Exams or RealOrAI. Sometimes I write in my blog.",
     seoTitle: "Pablo Portas López | Computer Engineering Student",
     seoDescription:
       "Explore the personal portfolio of Pablo Portas López, Computer Engineering student at UDC and LNU. I program in my free time (like Pass me Exams or RealOrAI) and write in my blog.",
@@ -40,12 +40,12 @@ export const translations = {
       donar: "Donate",
       exams: "Pass me Exams",
     },
-    timeIn: "in Galicia, Spain",
+    timeIn: "in Galicia 🧜🏻‍♀️, Spain 🇪🇸",
     builtWith: "Built with Astro",
   },
   gl: {
     title: "Pablo Portas López",
-    bio: "Estudante de Enxeñaría Informática na UDC 💜🧜🏻‍♀️ (fixen Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como Pásame Exames ou RealOrAI. Ás veces escribo no meu blog.",
+    bio: "Estudante de Enxeñaría Informática na UDC 💜🇪🇸 (fixen Erasmus en LNU 💛🇸🇪). Programo cousas no meu tempo libre como Pásame Exames ou RealOrAI. Ás veces escribo no meu blog.",
     seoTitle: "Pablo Portas López | Estudante de Enxeñaría Informática",
     seoDescription:
       "Descubre o portfolio de Pablo Portas López, estudante de Enxeñaría Informática na UDC e LNU. Programo no meu tempo libre cousas como Pásame Exames ou RealOrAI, e escribo no meu blog.",
@@ -61,7 +61,7 @@ export const translations = {
       donar: "Doar",
       exams: "Pásame Exames",
     },
-    timeIn: "en Galicia, España",
+    timeIn: "en Galicia 🧜🏻‍♀️, España 🇪🇸",
     builtWith: "Creado con Astro",
   },
 };
