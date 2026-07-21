@@ -97,15 +97,17 @@ const iconMap = {
       {
         customLinks.map((link) => {
           const label = link.labelKey ? t.links[link.labelKey] : link.label;
+          const separator = link.href.includes("?") ? "&" : "?";
+          const utmHref = `${link.href}${separator}utm_source=portfolio&utm_medium=web&utm_campaign=directory`;
           return (
             <a
-              href={link.href}
+              href={utmHref}
               target="_blank"
               rel="noopener noreferrer"
               class="pl-trigger group relative flex items-center justify-between p-3.5 -mx-3.5 rounded-xl hover:bg-[rgba(28,25,23,0.03)] dark:hover:bg-[rgba(244,244,245,0.03)] border border-transparent hover:border-stone-200/20 dark:hover:border-zinc-800/10 transition-[background-color,border-color,transform] duration-200 ease-[var(--ease-spring)] active:scale-[0.98] cursor-pointer"
               data-umami-event="click-outbound-link"
               data-umami-event-name={label}
-              data-umami-event-url={link.href}
+              data-umami-event-url={utmHref}
               data-umami-event-type={link.category}
             >
               <div class="flex items-center gap-3">
