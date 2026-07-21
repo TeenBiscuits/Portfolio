@@ -66,12 +66,16 @@ html {
     background-color 0.4s var(--ease-spring),
     color 0.4s var(--ease-spring);
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   width: 100%;
+  max-width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
