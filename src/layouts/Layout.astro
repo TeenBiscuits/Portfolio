@@ -7,13 +7,56 @@ interface Props {
   title?: string;
   description?: string;
   lang?: string;
+  personDescription?: string;
+  ogLocale?: string;
+  ogLocaleAlternate?: string[];
 }
 
 const {
   title = "Pablo Portas López",
-  description = "Estudiante de Ingeniería Informática en la UDC 🎓💜💻 de Erasmus en LNU 💛🇸🇪",
+  description = "Estudiante de Ingeniería Informática en la UDC",
   lang = "es",
+  personDescription = "Estudiante de Ingeniería Informática en la Universidade da Coruña",
+  ogLocale = "es_ES",
+  ogLocaleAlternate = [],
 } = Astro.props;
+
+const canonicalUrl = `https://www.pablopl.dev${lang === "es" ? "" : `/${lang}`}`;
+
+const jsonLdPerson = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pablo Portas López",
+  url: "https://www.pablopl.dev/",
+  jobTitle: title.replace("Pablo Portas López — ", ""),
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Universidade da Coruña (UDC)" },
+    { "@type": "CollegeOrUniversity", name: "Linnaeus University (LNU)" },
+  ],
+  description: personDescription,
+  sameAs: [
+    "https://github.com/TeenBiscuits",
+    "https://x.com/PabloPortasL",
+    "https://www.linkedin.com/in/pabloportaslopez/",
+  ],
+  knowsLanguage: [
+    { "@type": "Language", name: "Spanish" },
+    { "@type": "Language", name: "English" },
+    { "@type": "Language", name: "Galician" },
+  ],
+  nationality: { "@type": "Country", name: "ES" },
+  homeLocation: { "@type": "Place", name: "Galicia, Spain" },
+};
+
+const jsonLdWebsite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: "https://www.pablopl.dev/",
+  name: "Pablo Portas López",
+  description: description,
+  inLanguage: ["es", "en", "gl"],
+  author: jsonLdPerson,
+};
 ---
 
 <!doctype html>
@@ -38,29 +81,40 @@ const {
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={`https://www.pablopl.dev${lang === 'es' ? '' : `/${lang}`}`} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="es" href="https://www.pablopl.dev/" />
     <link rel="alternate" hreflang="en" href="https://www.pablopl.dev/en" />
     <link rel="alternate" hreflang="gl" href="https://www.pablopl.dev/gl" />
     <link rel="alternate" hreflang="x-default" href="https://www.pablopl.dev/" />
-    
+
     <!-- Open Graph -->
+    <meta property="og:locale" content={ogLocale} />
+    {ogLocaleAlternate.map((alt) => (
+      <meta property="og:locale:alternate" content={alt} />
+    ))}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://www.pablopl.dev${lang === 'es' ? '' : `/${lang}`}`} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content="https://www.pablopl.dev/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@PabloPortasL" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://www.pablopl.dev/og.png" />
-    
+
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdPerson)}>
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebsite)}>
+    </script>
     <ClientRouter />
 
     <!-- Self Hosted Umami Analytics -->
