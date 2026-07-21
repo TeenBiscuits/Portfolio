@@ -175,5 +175,9 @@ const jsonLdWebsite = {
   </head>
   <body class="selection:bg-stone-200 dark:selection:bg-zinc-800 transition-colors duration-200">
     <slot />
+    <script>
+      import { bind } from "cuelume";
+      bind();
+    </script>
   </body>
 </html>

@@ -30,6 +30,7 @@ const iconMap = {
   <header class="w-full flex items-center justify-between mb-12 fade-in-section delay-0">
     <a
       href={lang === "es" ? "/" : `/${lang}`}
+      data-cuelume-hover="tick"
       class="hover:opacity-80 active:scale-95 transition-spring cursor-pointer select-none flex items-center"
       transition:name="monogram"
       aria-label="Home"
@@ -82,6 +83,7 @@ const iconMap = {
             title={social.label}
             target={social.href.startsWith("mailto:") ? undefined : "_blank"}
             rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            data-cuelume-hover="sparkle"
             class="text-stone-400 hover:text-stone-900 dark:text-zinc-500 dark:hover:text-zinc-200 transition-all duration-200 ease-[var(--ease-spring)] hover:scale-108 active:scale-90"
             data-umami-event="click-social-link"
             data-umami-event-name={social.label}
@@ -104,6 +106,8 @@ const iconMap = {
               href={utmHref}
               target="_blank"
               rel="noopener noreferrer"
+              data-cuelume-press
+              data-cuelume-release
               class="pl-trigger group relative flex items-center justify-between p-3.5 -mx-3.5 rounded-xl hover:bg-[rgba(28,25,23,0.03)] dark:hover:bg-[rgba(244,244,245,0.03)] border border-transparent hover:border-stone-200/20 dark:hover:border-zinc-800/10 transition-[background-color,border-color,transform] duration-200 ease-[var(--ease-spring)] active:scale-[0.98] cursor-pointer"
               data-umami-event="click-outbound-link"
               data-umami-event-name={label}

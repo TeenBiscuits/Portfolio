@@ -24,6 +24,7 @@ const locales: { code: Locale; label: string; href: string }[] = [
       return (
         <a
           href={locale.href}
+          data-cuelume-hover="tick"
           class={`px-2.5 py-1 text-[11px] font-mono rounded-md font-medium tracking-wider transition-all duration-300 ease-[var(--ease-spring)] focus:outline-none focus-visible:ring-1 focus-visible:ring-stone-400 dark:focus-visible:ring-zinc-600 ${
             isActive
               ? "bg-white dark:bg-zinc-800 text-stone-900 dark:text-zinc-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-stone-200/20 dark:border-zinc-700/30 font-semibold"
