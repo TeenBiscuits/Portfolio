@@ -117,13 +117,15 @@ const jsonLdWebsite = {
     </script>
     <ClientRouter />
 
-    <!-- Rybbit Analytics -->
+    <!-- Self Hosted Umami Analytics -->
     <script
       is:inline
       defer
       data-astro-rerun
-      src="https://analytics.pablopl.dev/api/script.js"
-      data-site-id="32c5b41dd6c6"></script>
+      src="https://analytics.pablopl.dev/script.js"
+      data-website-id="9707422a-089b-4815-9b7b-492c23add947"
+      data-performance="true"
+      data-domains="www.pablopl.dev"></script>
     <!-- Ahrefs Analytics -->
     <script is:inline data-astro-rerun src="https://analytics.ahrefs.com/analytics.js" data-key="41AHUOkOrsmT26f+Ow8zaQ" async></script>
 
@@ -154,11 +156,10 @@ const jsonLdWebsite = {
         }
       };
 
-      // Persist theme, track view transitions, and add navigated class after swaps
+      // Persist theme and add navigated class after swaps
       document.addEventListener("astro:after-swap", () => {
         applyTheme();
         document.documentElement.classList.add("navigated");
-        window.rybbit?.pageview();
       });
 
       // Add navigated class to initial load after animations complete (1000ms)
